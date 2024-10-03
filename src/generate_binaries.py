@@ -11,8 +11,10 @@ for cuda_ver in cuda_versions:
     if not "cuda-{}".format(cuda_ver) in os.listdir("{}/../build".format(pwd)):
         os.mkdir("{}/../build/cuda-{}".format(pwd, cuda_ver))  
 
+    #Copy docker recipe over
     subprocess.call("cp -r docker_recipe/* ../build/cuda-{}/".format(cuda_ver), shell=True)
 
+    #Update CUDA version in the Dockerfile
     subprocess.call("sed -i 's/insert_version/{}/g' ../build/cuda-{}/Dockerfile".format(cuda_ver, cuda_ver), shell=True)
 
     #Enable docker cross-platform

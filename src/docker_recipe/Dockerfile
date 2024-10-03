@@ -58,4 +58,4 @@ WORKDIR /usr/src/build_script
 RUN bash /usr/src/build_script/build.sh
 
 RUN mv /usr/src/build_script/libxc-6.2.2/libxc_build/products /products
-RUN zip -r /products.zip /products
+RUN zip -ry /products.zip /products
