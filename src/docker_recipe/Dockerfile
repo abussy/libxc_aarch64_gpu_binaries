@@ -27,15 +27,15 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Add the PPA for GCC (for example, to install GCC-7)
+# Add the PPA for GCC (for example, to install GCC-8)
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test && apt-get update
 
-# Install GCC-7 and G++-7
-RUN apt-get install -y gcc-7 g++-7
+# Install GCC-8 and G++-8
+RUN apt-get install -y gcc-8 g++-8
 
-# Update alternatives to set GCC-7 as the default
-RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 60 \
-    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 60
+# Update alternatives to set GCC-8 as the default
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 60 \
+    && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 60
 
 # Verify that the default gcc is the version we installed
 RUN gcc --version && g++ --version
@@ -57,5 +57,5 @@ WORKDIR /usr/src/build_script
 
 RUN bash /usr/src/build_script/build.sh
 
-RUN mv /usr/src/build_script/libxc-6.2.2/libxc_build/products /products
+RUN mv /usr/src/build_script/libxc-7.0.0/libxc_build/products /products
 RUN zip -ry /products.zip /products
