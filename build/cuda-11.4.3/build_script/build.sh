@@ -15,9 +15,6 @@ fi
 tar --extract --file libxc-${version}.tar.gz
 cd libxc-${version}
 
-patch -p1 < ../patches/cmake-cuda.patch
-patch -p1 < ../patches/source-fixes.patch
-
 mkdir libxc_build
 cd libxc_build
 
